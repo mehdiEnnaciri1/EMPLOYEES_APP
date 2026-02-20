@@ -1,56 +1,54 @@
 @extends('adminlte::page')
 
-@section('plugins.datatables',true)
-
+@section('plugins.datatables', true)
 
 @section('title')
-List Demande conge
+    Liste des Demandes de Congé
 @endsection
 
 @section('content-header')
-<h2>List Demande conge</h2>
+    <h2>Liste des Demandes de Congé</h2>
 @endsection
 
 @section('content')
 @if(auth()->user()->hasRole('admin'))
-<div class="contrainer">
-    <div class="row">
-        <div class="col-md-20 mx-auto">
-            <div class="card-my-5">
-                <div class="card-header">
-                    <div class="text-center text-uppercase">
-                        <h4>Liste des demandes conge</h4>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <div class="card my-5">
+                    <div class="card-header text-center text-uppercase">
+                        <h4>Liste des demandes de congé</h4>
                     </div>
                     <div class="card-body">
-                        <table id="mytable" class="table table-bordred font-weight-bold table-stripped">
+                        <table id="mytable" class="table table-bordered font-weight-bold table-striped">
                             <thead>
                                 <tr>
-                                    <th>id</th>
-                                    <th>matricule</th>
-                                    <th>nom</th>
-                                    <th>prenom</th>
-                                    <th>type</th>
-                                    <th>date debut</th>
-                                    <th>date fin</th>
-                                    <th>action</th>
+                                    <th class="col-md-1">ID</th>
+                                    <th class="col-md-2">Matricule</th>
+                                    <th class="col-md-2">Nom</th>
+                                    <th class="col-md-2">Prénom</th>
+                                    <th class="col-md-2">Type</th>
+                                    <th class="col-md-2">Date Début</th>
+                                    <th class="col-md-2">Date Fin</th>
+                                    <th class="col-md-2">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($demandes as $key => $Demande)
                                 <tr>
-                                    <td>{{$key+=1}}</td>
-                                    <th>{{$Demande->matricule}}</th>
-                                    <th>{{$Demande->nom}}</th>
-                                    <th>{{$Demande->prenom}}</th>
-                                    <th>{{$Demande->type}}</th>
-                                    <th>{{$Demande->date_debut}}</th>
-                                    <th>{{$Demande->date_fin}}</th>
-                                    <td class="d-flex justify-content-center aligh-items-center">
-                                        <form id="{{$Demande->matricule}}" action="{{route('demandes.destroy',$Demande->matricule)}}" method="post">
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $Demande->matricule }}</td>
+                                    <td>{{ $Demande->nom }}</td>
+                                    <td>{{ $Demande->prenom }}</td>
+                                    <td>{{ $Demande->type }}</td>
+                                    <td>{{ $Demande->date_debut }}</td>
+                                    <td>{{ $Demande->date_fin }}</td>
+                                    <td class="d-flex justify-content-center align-items-center">
+                                        <form id="{{ $Demande->matricule }}" action="{{ route('demandes.destroy', $Demande->matricule) }}" method="post">
                                             @method('DELETE')
                                             @csrf
                                         </form>
-                                        <button type="submit" onclick="deleteEmp('{{$Demande->matricule}}')" class="btn btn-sm btn-danger">
+                                        <button type="submit" onclick="deleteEmp('{{ $Demande->matricule }}')" class="btn btn-sm btn-danger">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -63,9 +61,9 @@ List Demande conge
             </div>
         </div>
     </div>
-</div>
 @endif
 @endsection
+
 
 
 @section('js')

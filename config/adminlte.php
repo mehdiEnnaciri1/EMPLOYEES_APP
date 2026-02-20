@@ -63,8 +63,8 @@ return [
     |
     */
 
-    'logo' => '<b>AIN-SBAA</b> arrondissement',
-    'logo_img' => 'vendor/adminlte/dist/img/logos.png',
+    'logo' => '<b>Arrondissement</b> AIN-SBAA',
+    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -110,7 +110,7 @@ return [
         'enabled' => true,
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-            'alt' => 'AdminLTE Preloader Image',
+            'alt' => '',
             'effect' => 'animation__shake',
             'width' => 60,
             'height' => 60,
@@ -387,7 +387,7 @@ return [
             'icon'    => 'fas fa-fw fa-map-marker',
             'submenu' => [
                 [
-                    'text' => 'LIST DES COMMUNES',
+                    'text' => 'LOCALISATION',
                     'url'  => 'admin/localisation',
                     'icon'    => 'fas fa-fw fa-map-marker',
                 ],
@@ -507,6 +507,16 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+        'CustomSidebar' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'css/adminlte-custom.css',
                 ],
             ],
         ],
